@@ -1,0 +1,78 @@
+
+#include <stdio.h>
+#include <math.h>
+
+
+
+
+
+int main(){
+
+    int a,b,x;
+    double r,p,k,n,e;
+    printf("Введите вещественную часть комплексного числа:");
+    scanf("%d", &a);
+    printf("Введите мнимую часть комплексного числа:");
+    scanf("%d", &b);
+    
+    printf("Выберете действие:\n");
+    printf("1 - Тригонометрическую запись числа z\n");
+    printf("2 - обратное к z число\n");
+    printf("3 - возведение в степень\n");
+    printf("4 - Все корни n-той степени из z\n");
+    scanf("%d", &x);
+    if(x==1){
+        r=sqrt(a*a+b*b);
+        if(a>0&&b>0 || a>0&&b<0) k=atan(a/(double)b);
+        if(a<0&&b>0) k=atan(a/(double)b) + M_PI;
+        if(a<0&&b<0) k=atan(a/(double)b) - M_PI;
+        
+        printf("z = %lf * (cos( %lf )+i*sin( %lf ))", r,k,k);
+        
+    }
+    
+    if(x==2){
+        r=sqrt(a*a+b*b);
+        p=a/r-b/r;
+        
+        printf(" z ^ (-1) = %lf - %lf = %lf", a/r, b/r, p);
+        
+    }
+    
+    if(x==3){
+        printf("введите степень n = ");
+        scanf("%lf", &n);
+        r=sqrt(a*a+b*b);
+        if(a>0&&b>0 || a>0&&b<0) k=atan(a/(double)b);
+        if(a<0&&b>0) k=atan(a/(double)b) + M_PI;
+        if(a<0&&b<0) k=atan(a/(double)b) - M_PI;
+       
+       printf("z= %lf * (cos( %lf )+i*sin( %lf ))", pow(r,n),n*k,n*k); 
+        
+        
+        
+    }
+    
+    if(x==4){
+        printf("введите степень  корня n = ");
+        scanf("%lf", &n);
+        r=sqrt(a*a+b*b);
+        e=pow(r,1/n);
+        if(a>0&&b>0 || a>0&&b<0) k=atan(a/(double)b);
+        if(a<0&&b>0) k=atan(a/(double)b) + M_PI;
+        if(a<0&&b<0) k=atan(a/(double)b) - M_PI;
+         
+        printf("z= %lf * (cos( %lf )+i*sin( %lf ))\n", e,k,k);
+         
+        for(int i=1; i<n; i++){
+            k+= 2*M_PI/n;
+            printf("z= %lf * (cos( %lf )+i*sin( %lf ))\n", e,k,k); 
+        }
+    }
+    
+    
+
+    return 0;
+}
+
+
